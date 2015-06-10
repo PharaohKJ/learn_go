@@ -28,7 +28,7 @@ source `which goenvwrapper.sh`
 ※上記手順ページを見たが、もうGOROOTは不必要らしい [あなたがGOROOTを本当に設定しなくていい理由 | Androg](http://kwmt27.net/index.php/2013/06/14/you-dont-need-to-set-goroot-really/)
 
 
-1.' OSX に gvm を導入
+1. OSX に gvm を導入
 ---------------------
 
 rubyでいうrbenv的なもの。
