@@ -332,6 +332,21 @@ Plugin configuration unchanged.
 Applying plugin configuration to rabbit@localhost... nothing to do.
 ```
 
+RabbitMQ開始
+
+```
+~
+[pharaohkj]$ rabbitmq-server
+
+              RabbitMQ 3.5.1. Copyright (C) 2007-2014 GoPivotal, Inc.
+  ##  ##      Licensed under the MPL.  See http://www.rabbitmq.com/
+  ##  ##
+  ##########  Logs: /usr/local/var/log/rabbitmq/rabbit@localhost.log
+  ######  ##        /usr/local/var/log/rabbitmq/rabbit@localhost-sasl.log
+  ##########
+              Starting broker... completed with 10 plugins.
+
+```
 
 MQTT vs AMQP
 -------------
@@ -355,10 +370,12 @@ googleしてでてくるサンプルが古くて動かない・・・
 
 `godoc -http=":6060"` でAPI熟読のこと
 
-MQTT
-----
+publisher
+---------
 
+https://github.com/PharaohKJ/learn_go/blob/master/src/github.com/pharaohkj/publisher/publisher.go
 
+subscriber
+----------
 
-AMQP
-====
+https://github.com/PharaohKJ/learn_go/blob/master/src/github.com/pharaohkj/subscriber/subscriber.go

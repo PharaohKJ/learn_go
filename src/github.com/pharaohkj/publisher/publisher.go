@@ -21,7 +21,7 @@ func main() {
 	//Publish 5 messages to /go-mqtt/sample at qos 1 and wait for the receipt
 	//from the server after sending each message
 	for i := 0; i < 5; i++ {
-		text := fmt.Sprintf("this is msg #%d!", i)
+		text := fmt.Sprintf("message from publisher #%d!", i)
 		token := c.Publish("go-mqtt/sample", 0, false, text)
 		token.Wait()
 	}
