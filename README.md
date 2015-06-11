@@ -192,3 +192,75 @@ build & install
 でビルドして`bin`に実行ファイル生成である。
 `newmath` の `sqrt.go` を参照した `hello` を `go install github.com/pharaohkj/hello`
 でビルドすると、参照されてコンパイルされ、pkgディレクトリに配置されるようだ。
+
+まとめると
+
+```
+~/gitwork/learn_go
+[pharaohkj]$ go install github.com/pharaohkj/hello
+~/gitwork/learn_go
+[pharaohkj]$ go install github.com/pharaohkj/server
+g~/gitwork/learn_go
+~/gitwork/learn_go
+[pharaohkj]$ go install github.com/pharaohkj/client
+```
+
+```
+~/gitwork/learn_go
+[pharaohkj]$ bin/hello
+Hello, world.  Sqrt(2) = 1.414213562373095
+~/gitwork/learn_go
+[pharaohkj]$ bin/server &
+[1] 26738
+~/gitwork/learn_go
+[pharaohkj]$ bin/client | jq .
+{
+  "Message": "Hello, World",
+  "Time": "2015-06-10T17:13:59+09:00"
+}
+~/gitwork/learn_go
+```
+
+ほかコマンド
+----------
+
+[go - The Go Programming Language](http://golang-jp.org/cmd/go/)
+
+テスト
+=====
+
+[Goでテストを書く - 成らぬは人の為さぬなりけり](http://straitwalk.hatenablog.com/entry/2014/09/18/232810)
+
+
+```
+$ cp sqrt.go sqrt_test.go
+```
+
+して、`func Sqrt` を `func SqrtTest` にする。
+
+ファイル命名ルールは **対象ファイル名_test.go**
+
+以下のようにtestingをimport
+
+```
+import (
+    "testing"
+)
+```
+
+関数命名ルールは **func Test対象関数名** (ファイル名はお尻だけれどこちらは逆)
+引数は必ず *testing.T を引数に取る
+
+テスト実行
+--------
+
+```
+~/gitwork/learn_go
+[pharaohkj]$ go test github.com/pharaohkj/newmath
+--- FAIL: TestSqrt (0.00s)
+	sqrt_test.go:12: error! 1.7320508075688774
+FAIL
+FAIL	github.com/pharaohkj/newmath	0.009s
+~/gitwork/learn_go
+[pharaohkj]$
+```
