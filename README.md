@@ -340,6 +340,14 @@ MQTT vs AMQP
 MQTT : シンプル・省電力・比較して軽い
 AMQP : 高機能・高信頼性 (金融系で実績あり)・比較して重い
 
+ライブラリ導入
+------------
+
+```
+cd $GOPATH
+go get git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git
+```
+
 googleしてでてくるサンプルが古くて動かない・・・
 -----------------------------------------
 
@@ -350,8 +358,7 @@ googleしてでてくるサンプルが古くて動かない・・・
 MQTT
 ----
 
-```
-```
+
 
 AMQP
 ====
