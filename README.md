@@ -118,7 +118,7 @@ fmt.Printf("%T", value)
 ので注意。
 
 最終的な配置
-----------
+----------J
 
 `export GOPATH=/Users/pharaohkj/gitwork/learn_go`
 環境において、
@@ -264,3 +264,94 @@ FAIL	github.com/pharaohkj/newmath	0.009s
 ~/gitwork/learn_go
 [pharaohkj]$
 ```
+
+
+MQTT & AMPQ
+===========
+
+Rubyで実験したときの https://github.com/PharaohKJ/learn_mqtt を参照した。
+
+準備
+----
+
+[RabbitMQ - Wikipedia](http://ja.wikipedia.org/wiki/RabbitMQ)を導入する。
+
+>RabbitMQ(ラビットエムキュー)は、Advanced Message Queuing Protocol(AMQP)を使用した、オープンソースのメッセージ指向ミドルウェアである。
+
+MQTTはプラグインで導入する(後述)
+
+```
+~/gitwork/learn_go/src/git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git
+[pharaohkj]$ brew install rabbitmq
+==> Downloading https://homebrew.bintray.com/bottles/rabbitmq-3.5.1.yosemite.bottle.tar.gz
+Already downloaded: /Library/Caches/Homebrew/rabbitmq-3.5.1.yosemite.bottle.tar.gz
+==> Pouring rabbitmq-3.5.1.yosemite.bottle.tar.gz
+==> Caveats
+Management Plugin enabled by default at http://localhost:15672
+
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+To have launchd start rabbitmq at login:
+    ln -sfv /usr/local/opt/rabbitmq/*.plist ~/Library/LaunchAgents
+Then to load rabbitmq now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.rabbitmq.plist
+Or, if you don't want/need launchctl, you can just run:
+    rabbitmq-server
+==> Summary
+🍺  /usr/local/Cellar/rabbitmq/3.5.1: 1035 files, 28M
+
+((/usr/local/sbinにパスを通す))
+~/gitwork/learn_go/src/git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git
+[pharaohkj]$ . ~/.bash_profile
+```
+
+RabbitMQにMQTTプラグインを入れる
+-----------------------------
+
+`rabbitmq-server`で起動してからじゃないとgitwork。
+
+
+```
+~/追加できないようだ/learn_go/src/git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git
+[pharaohkj]$ rabbitmq-plugins enable rabbitmq_mqtt
+Plugin configuration unchanged.
+
+Applying plugin configuration to rabbit@localhost... failed.
+ * Could not contact node rabbit@localhost.
+   Changes will take effect at broker restart.
+ * Options: --online  - fail if broker cannot be contacted.
+            --offline - do not try to contact broker.
+
+((ここで別ターミナルで rabbitmq-server))
+
+~/gitwork/learn_go/src/git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git
+[pharaohkj]$ rabbitmq-plugins enable rabbitmq_mqtt
+Plugin configuration unchanged.
+
+Applying plugin configuration to rabbit@localhost... nothing to do.
+```
+
+
+MQTT vs AMQP
+-------------
+
+[MQTTとAMQPと.NET](http://www.slideshare.net/terurou/mqttamqpnet)
+MQTT : シンプル・省電力・比較して軽い
+AMQP : 高機能・高信頼性 (金融系で実績あり)・比較して重い
+
+googleしてでてくるサンプルが古くて動かない・・・
+-----------------------------------------
+
+最新は公式より [Paho - Open Source messaging for M2M](http://www.eclipse.org/paho/clients/golang/)
+
+`godoc -http=":6060"` でAPI熟読のこと
+
+MQTT
+----
+
+```
+```
+
+AMQP
+====
